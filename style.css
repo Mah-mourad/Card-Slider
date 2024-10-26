@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    padding: 0 35px;
+    background: linear-gradient(to left top,#dd4c7a, #a15e5e);
+}
+.wrapper{
+    max-width: 940px;
+    width: 100%;
+    position: relative;
+}
+.wrapper i{
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    font-size: 1.25rem;
+}
+.wrapper i:first-child{
+    left: -25px;
+}
+.wrapper i:last-child{
+    right: -25px;
+}
+.carusel :where(.card, .img){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper .carusel{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: 0;
+    scroll-behavior: smooth;
+}
+.carusel.no-transition{
+    scroll-behavior: auto;
+}
+.carusel.dragging{
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+.carusel.dragging .card{
+    cursor: grab;
+    user-select: none;
+}
+.carusel::-webkit-scrollbar{
+    display: none;
+}
+.carusel .card{
+    scroll-snap-align: start;
+    list-style: none;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 350px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    cursor: pointer;
+}
+.card .img{
+    width: 148px;
+    height: 148px;
+    background-color: #dd4c7a;
+    border-radius: 50%;
+}
+.carusel .card .img img{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+.card h2{
+    font-weight: 600;
+    font-size: 25px;
+    margin: 25px 0 5px;
+}
+.card span{
+    color: #6a6d78;
+    font-size: 21px;
+}
+@media (max-width:900px) {
+    .wrapper .carusel{
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+@media (max-width:600px) {
+    .wrapper .carusel{
+        grid-auto-columns: 100%;
+    }
+}
